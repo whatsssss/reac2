@@ -1,0 +1,107 @@
+
+cd MyTestApp && react-native run-android
+
+https://reactgo.com/material-ui-react-tutorial/
+https://medium.com/vingle-tech-blog/react-hook-ec3f25c2d8fa
+
+
+
+https://reactdesktop.js.org/demo/
+https://material-ui.com/
+
+
+
+npm install --save redux react-redux react-router-dom 
+
+npm install @material-ui/core @material-ui/icons
+
+api 확인
+https://material-ui.com/components/drawers/#api
+
+next.js 사용
+https://nextjs.org/learn/basics/using-shared-components
+
+adb.exe 실제 통신하는... 환경변수잡아줘야됨/
+
+
+
+안드로이드 환경설정
+PATH
+C:\Users\bitcamp\AppData\Local\Android\Sdk\platform-tools
+
+
+C:\Users\bitcamp\AppData\Local\Android\Sdk\tools
+에뮬레이터 환경변수.
+
+
+ANDROID_HOME
+C:\Users\bitcamp\AppData\Local\Android\Sdk
+
+
+https://ko.reactjs.org/docs/hooks-overview.html#state-hook 오늘8/27
+
+adb devices
+npm install -g react-native-cli
+npx react-native init MyTestApp
+
+
+import React,{userState} from 'react'
+
+export default functin Counter(){
+const[] = userState(0)
+return()
+
+}
+
+hooks0827
+
+
+
+npm install --save axios
+
+
+
+ProductList
+
+import React,{userState} from 'react'
+
+export default function ProductList(props){
+
+    const items = [
+        {pno:1, name:'연필', price:500},
+        {pno:2, name:'2연필', price:2500},
+        {pno:3, name:'3연필', price:3500},
+        {pno:4, name:'4연필', price:4500}
+    ]
+
+    const addCart = (pno) => (
+        console.log("pno : " + pno )
+        
+    )
+
+    const cartList = 
+        cart.map((pno,idx)=>{
+            <li key = {idx}>{pno}</li>
+        })
+
+    const [cart, setCart] = userState([])
+
+    const itemList = items.map( ({pno,name,price})=>
+            <li key={pno}>{name} = {price}
+                <input type = 'checkbox' onChange = {()=>addCart(pno)}></input>
+            </li> )
+
+    return(
+
+        <div>
+            <ul>
+                 {itemList}
+            </ul>
+            <hr/>
+            <h2>Total</h2>
+
+        </div>
+    )
+
+}
+
