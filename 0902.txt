@@ -1,0 +1,270 @@
+npx react-native init todo
+
+npx react-native run-android
+한번 배포 후 그 다음은 빠르다능... react navtive가 ..
+
+package.json
+리액트-native 버전 0.59부터 hooks 가능
+
+android folder
+
+app -> buck 하나로 여러가지 앱 만들려면 buck. 41줄 건드려..
+Manifest.xml을 건들필요가..
+
+안드로이드 <div> 대신 <view> -> html 로는 개발 못하는구나.
+예를 들면 버튼은 버튼 tag가  있었지? 그거 못해 ㅋㅋㅋㅋㅋㅋ
+header라는가 
+
+Fragment 비어있는 태그..
+
+App 3가지? 하이브리드,../ //
+09월 2일이다. 
+
+Activity 
+Cordova 방식 빠름.
+JX문법 <Text>
+
+
+컨트롤 + M
+jpa가 보면 객체지향으로 만들어주고 mysql 방언으로 -> mysql문.
+
+
+1. 순수한 html은 사용불가. react-native 에 맞는................ jx문법
+
+2. onClcik() 0.02s -> onPress
+
+
+debugging !!!
+비쥬얼적으로 경고창.. console.
+
+
+npm install react-native-simple-toast --save 
+import Toast from 'react-native-simple-toast';
+->App.js에서 Button 쓸수있찌; 안드로이드.
+이게 머냐면...
+
+debug 툴
+
+npm install -g react-devtools
+얘 쓸꺼면. devtools 명령어 가능
+react-devtools 안먹히면 앞에 npx 붙여. 방화벽뜰꺼야. 일렉트론...
+
+cmd 창에서 먼저 react-devtools 하고
+npx start 해줘.
+
+서버쪽에서 이미지 가져다가 보여주는거~~
+
+리액트 기존의 스타일을 먹인다고_ 화면마다 스타일을 개별적으로 컴퍼넌트마다
+따로따로 스타일 먹여야..
+
+
+<View>
+	<Heading />
+	<Input />
+	<TodoList />
+	<Button />
+	<TabBar />
+</View>
+
+
+
+
+
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow
+ */
+
+import React, {Fragment} from 'react';
+import {
+  SafeAreaView,
+  StyleSheet,
+  ScrollView,
+  View,
+  Text,
+  StatusBar,
+  Button,
+  Image
+
+} from 'react-native';
+
+import {
+  Header,
+  LearnMoreLinks,
+  Colors,
+  DebugInstructions,
+  ReloadInstructions,
+} from 'react-native/Libraries/NewAppScreen';
+
+import Toast from 'react-native-simple-toast';
+
+const App = () => {
+  return (
+    <Fragment>
+      <StatusBar barStyle="dark-content" />
+      <SafeAreaView>
+        <ScrollView
+          contentInsetAdjustmentBehavior="automatic"
+          style={styles.scrollView}>
+          <Header />
+          {global.HermesInternal == null ? null : (
+            <View style={styles.engine}>
+              <Text style={styles.footer}>Engine: Hermes</Text>
+            </View>
+
+          )}
+          <View>
+
+            <Text>Hello World</Text>
+            <Button title ="PRESS" onPress={()=>(console.log('..........'))}></Button>
+          </View>
+
+          <Image source={{uri: 'https://facebook.github.io/react/logo-og.png'}}
+       style={{width: 400, height: 400}} />
+          
+        </ScrollView>
+      </SafeAreaView>
+    </Fragment>
+  );
+};
+
+const styles = StyleSheet.create({
+  scrollView: {
+    backgroundColor: Colors.lighter,
+  },
+  engine: {
+    position: 'absolute',
+    right: 0,
+  },
+  body: {
+    backgroundColor: Colors.white,
+  },
+  sectionContainer: {
+    marginTop: 32,
+    paddingHorizontal: 24,
+  },
+  sectionTitle: {
+    fontSize: 24,
+    fontWeight: '600',
+    color: Colors.black,
+  },
+  sectionDescription: {
+    marginTop: 8,
+    fontSize: 18,
+    fontWeight: '400',
+    color: Colors.dark,
+  },
+  highlight: {
+    fontWeight: '700',
+  },
+  footer: {
+    color: Colors.dark,
+    fontSize: 12,
+    fontWeight: '600',
+    padding: 4,
+    paddingRight: 12,
+    textAlign: 'right',
+  },
+});
+
+export default App;
+
+
+import React, { Component } from 'react'
+import { View, ScrollView, StyleSheet } from 'react-native'
+import Header from './app/Header'
+import Input from './app/input';
+import Button from './app/Button';
+let todoIndex = 0
+
+class App extends Component {
+
+  constructor() {
+		super()
+		this.state = {
+			inputValue: '',
+			todos: [],
+			type: 'All'
+    }
+    this.submitTodo = this.submitTodo.bind(this) 
+  }
+  
+
+  inputChange(inputValue) { 
+    console.log(' Input Value: ' , inputValue) 
+    this.setState({ inputValue }) 
+  }
+
+  submitTodo () {   
+    if (this.state.inputValue.match(/^\s*$/)) {
+      return
+    }
+    const todo = {
+      title: this.state.inputValue,
+      todoIndex,
+      complete: false
+    }
+    todoIndex++ 
+    const todos = [...this.state.todos, todo] 
+    this.setState({ todos, inputValue: '' }, () => { 
+        console.log('State: ', this.state) 
+    })
+}
+
+
+render() {
+
+  const { inputValue } = this.state
+
+  return (
+    <View style={styles.container}>
+      <ScrollView keyboardShouldPersistTaps='always'
+            style={styles.content}>
+        <Header/>
+        <Input
+          inputValue={inputValue} 
+          inputChange={(text) => this.inputChange(text)} />     
+        <Button submitTodo={this.submitTodo}/>
+
+      </ScrollView>
+    </View>
+  )
+}
+}
+
+const styles = StyleSheet.create({
+container: {
+  flex: 1,
+  backgroundColor: '#f5f5f5'
+},
+content: {
+  flex: 1,
+  paddingTop: 60
+}
+})
+
+export default App
+
+
+
+https://www.npmjs.com/package/react-xml-parser
+npm i react-xml-parser
+
+--------------------------0903
+
+https://reactnavigation.org/docs/en/headers.html
+예제... Nav 사용해서.
+
+
+
+
+
+
+
+https://react-native-training.github.io/react-native-elements/
+
+
+stack navigation goback

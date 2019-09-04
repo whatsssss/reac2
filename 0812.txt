@@ -1,0 +1,43 @@
+sts 4버전에서 vscode 지원. <좀더 가벼움>
+
+vscode <자바언어로 윈도우 어플리케이션만들때쓰임.> 
+
+
+java extension pack 설치
+
+inteliJ 도 가능...
+-vs code 없을꺼야 프로젝트 연결안해서..
+컨트롤 쉬프트 p < 프로젝트> 에서 Spring 검색. -> Maven 프로젝트
+자바, zerock.org프로젝트명 , 이름 소문자로. , 자바버전(2.1.7), 스냅샷? 
+-> 설정을 체크하는거.. 
+데브툴 롬복 웹스타터 마이sql, spring  data jpa<타임리프, 시큐리티 xx>
+스프링 이니셜라이즈 <-이클립에서 롬복추가 그딴거 .
+ 자바 서포트 <부트서포트 보다 얘가더..
+
+위치 -> C:\zzz2\zerock .code
+
+application.yml 으로바꾸고 ymal 다운..
+
+https://jeong-pro.tistory.com/159
+
+-update 말고 크리에이트
+
+zerocKang
+
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    generate-ddl: true
+    show-sql: true
+    database: mysql
+에 해서 todo 하면 생겨.
+
+
+
+https://reacttraining.com/react-router/web/example/basic
+
+리액트. 이거보고..
+
+Json으로 변환 ㅜㅜ
+ 

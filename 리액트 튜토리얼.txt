@@ -57,7 +57,7 @@ hooks0827
 
 
 
-npm install --save axios
+npm install --save axios react-router-dom redux react-redux
 
 
 
@@ -104,4 +104,79 @@ export default function ProductList(props){
     )
 
 }
+http://localhost:3000/list/1
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import React,{useRef} from 'react'
+export default function Main(props){
+    const input = useRef(null)
+    const requestRegist = () =>{
+        const title = input.current.value
+        console.log(title)
+    }
+
+    return(
+        <div>
+            <h1>Register Page</h1>
+            <div>
+                <input type='text' ref={input}></input>
+                <button onClick={()=>requestRegist()} >Register</button>
+            </div>
+        </div>
+    )
+}
+
+
+
+import React,{useRef, useState} from 'react'
+import Axios from 'axios';
+import {Redirect} from 'react-router-dom'
+
+
+export default function Main(props){
+    
+    const input = useRef(null)
+    
+    const requestRegist = () =>{
+        const title = input.current.value
+        console.log(title)
+        Axios.post("http://192.168.41.80:8080/todo/new", {title:title})
+        .then(res =>{
+            console.log(res.status)
+
+        })  
+    }
+
+    return(
+        <div>
+            <h1>Register Page</h1>
+            <div>
+                <input type='text' ref={input}></input>
+                <button onClick={()=>requestRegist()} >Register</button>
+            </div>
+        </div>
+    )
+}
